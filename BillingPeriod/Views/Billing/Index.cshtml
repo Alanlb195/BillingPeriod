@@ -1,0 +1,49 @@
+﻿@model BillingPeriod.Models.Period;
+
+@{
+    ViewData["Title"] = "Billing Page";
+}
+
+<div class="row">
+
+    <div class="col-sm-12 col-md-8 col-lg-6">
+
+        <h1 class="text-center">Create a new billing calendar</h1>
+
+        <form asp-action="GenerateBillingCalendar" method="post">
+            <div class="form-group">
+                <label asp-for="InitialDate"></label>
+                <input type="date" class="form-control" asp-for="InitialDate" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FinalDate"></label>
+                <input type="date" class="form-control" asp-for="FinalDate" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Periodicity"></label>
+                <select class="form-control" asp-for="Periodicity">
+                    <option value="1">Monthly</option>
+                    <option value="2">Bimonthly</option>
+                    <option value="6">Half-year</option>
+                    <option value="12">Annual</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CuttingDay"></label>
+                <input class="form-control" asp-for="CuttingDay" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PrintDay"></label>
+                <input class="form-control" asp-for="PrintDay" />
+            </div>
+
+            <button class="btn btn-block btn-success" type="submit">Generate Billing Period</button>
+        </form>
+
+    </div>
+
+</div>
