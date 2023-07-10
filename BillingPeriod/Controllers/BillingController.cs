@@ -1,17 +1,15 @@
-﻿using BillingPeriod.Helpers;
-using BillingPeriod.Models;
+﻿using BillingPeriod.Models;
+using BillingPeriod.Services;
 using Microsoft.AspNetCore.Mvc;
-using static BillingPeriod.Helpers.PeriodRowCalculator;
 
 namespace BillingPeriod.Controllers
 {
     public class BillingController : Controller
     {
-        private readonly PeriodRowCalculator periodRowCalculator;
-
-        public BillingController()
+        private readonly IBillingService _billingService;
+        public BillingController(IBillingService billingService)
         {
-            periodRowCalculator = new DefaultPeriodRowCalculator();
+            _billingService = billingService;
         }
 
         public IActionResult Index()
@@ -19,12 +17,17 @@ namespace BillingPeriod.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult GenerateBillingCalendar(Period period)
+        public IActionResult BillingCalendar()
         {
-            List<PeriodRow> periodRows = periodRowCalculator.GeneratePeriodRows(period);
+            return View();
+        }
 
-            return RedirectToAction("Index", periodRows);
+        [HttpPost]
+        public IActionResult BillingCalendar(Period period)
+        {
+            List<PeriodRow> periodRows = _billingService.GeneratePeriodRows(period);
+
+            return View(periodRows);
         }
     }
 }

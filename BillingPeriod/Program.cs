@@ -1,7 +1,13 @@
+using BillingPeriod.Services;
+using BillingPeriod.Services.Helpers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IBillingService, BillingService>();
+builder.Services.AddSingleton<FinalDateCalculator>();
+builder.Services.AddSingleton<PrintDayCalculator>();
 
 var app = builder.Build();
 

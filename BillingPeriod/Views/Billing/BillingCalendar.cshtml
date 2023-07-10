@@ -1,0 +1,34 @@
+﻿@model List<BillingPeriod.Models.PeriodRow>;
+
+
+@{
+    ViewData["Title"] = "Billing Calendar";
+}
+
+
+<h2 class="pt-5 pb-5 text-center">Billing Calendar</h2>
+
+<table class="table table-light">
+
+    <thead class="bg-secondary">
+        <tr>
+            <th>Initial Date</th>
+            <th>Final Date</th>
+            <th>Print Day</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var period in Model)
+        {
+            <tr>
+                <td>@period.InitialDate.ToString("dd/MM/yyyy")</td>
+                <td>@period.FinalDate.ToString("dd/MM/yyyy")</td>
+                <td>@period.PrintDay.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
