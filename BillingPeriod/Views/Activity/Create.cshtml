@@ -1,0 +1,39 @@
+﻿@model BillingPeriod.Models.ActivityViewModel;
+@using BillingPeriod.Models
+
+@{
+    ViewData["Title"] = "Crear Actividad";
+}
+
+<div class="container">
+    
+    @Html.Partial("_NotificationPanel")
+
+    <h1 class="pt-5 pb-5 text-center">Crear actividad</h1>
+
+    <form method="post" action="Create">
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input type="text" asp-for="Name" class="form-control" required>
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="InitialDate" class="form-label"></label>
+            <input type="datetime-local" asp-for="InitialDate" class="form-control" required>
+            <span class="text-danger" asp-validation-for="InitialDate"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="FinalDate"></label>
+            <input type="datetime-local" asp-for="FinalDate" class="form-control" required>
+            <span class="text-danger" asp-validation-for="FinalDate"></span>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+        </div>
+    </form>
+    <a class="btn btn-success btn-block" asp-action="Index" asp-controller="Activity">Regresar al calendario</a>
+</div>

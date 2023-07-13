@@ -1,0 +1,56 @@
+﻿@model List<BillingPeriod.Models.Activity>;
+
+@{
+    ViewData["Title"] = "Listado de Actividades";
+}
+
+<h1 class="pt-5 pb-5 text-center">Lista de actividades</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <form method="get" action="@Url.Action("List", "Activity")" class="mb-3">
+            <div class="input-group">
+                <label for="fecha" class="sr-only">Filtrar por fecha:</label>
+                <input type="date" id="fecha" name="fecha" class="form-control">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model.Count < 1)
+{
+    <p class="text-center text-danger mb-5 mt-5">No hay actividades que mostrar</p>
+}
+
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Actividad</th>
+                <th>Fecha</th>
+                <th>Horario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var activity in Model)
+            {
+                <tr>
+                    <td>@activity.Name</td>
+                    <td>@activity.InitialDate.ToString("dd/MM/yyyy")</td>
+                    <td>De @activity.InitialDate.ToString("HH:mm") a @activity.FinalDate.ToString("HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
+<a class="btn btn-primary btn-block" asp-action="Index" asp-controller="Activity">Regresar al Calendario</a>
+<a class="btn btn-success btn-block" asp-action="Create" asp-controller="Activity">Agendar una actividad</a>

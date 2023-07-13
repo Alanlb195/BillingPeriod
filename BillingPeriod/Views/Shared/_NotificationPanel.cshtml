@@ -1,0 +1,6 @@
+﻿@if (TempData["Notification2"] != null)
+{
+    <div class="alert @TempData["NotificationCSS"]">
+        <p>@Html.Raw(TempData["Notification2"])</p>
+    </div>
+}

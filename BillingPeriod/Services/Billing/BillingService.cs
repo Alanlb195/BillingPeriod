@@ -1,7 +1,7 @@
 ﻿using BillingPeriod.Models;
 using BillingPeriod.Services.Helpers;
 
-namespace BillingPeriod.Services
+namespace BillingPeriod.Services.Billing
 {
     public class BillingService : IBillingService
     {

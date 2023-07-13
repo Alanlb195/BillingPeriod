@@ -1,5 +1,5 @@
 ﻿using BillingPeriod.Models;
-using BillingPeriod.Services;
+using BillingPeriod.Services.Billing;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BillingPeriod.Controllers

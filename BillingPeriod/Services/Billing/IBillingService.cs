@@ -1,6 +1,6 @@
 ﻿using BillingPeriod.Models;
 
-namespace BillingPeriod.Services
+namespace BillingPeriod.Services.Billing
 {
     public interface IBillingService
     {
