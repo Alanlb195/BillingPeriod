@@ -10,13 +10,13 @@ namespace BillingPeriod.Models
 
         [Required]
         [Display(Name = "Fecha y hora inicial")]
-        [DataType(DataType.DateTime, ErrorMessage = "Fecha Inválida")]
+        [DataType(DataType.DateTime, ErrorMessage = "Formato de fecha Inválida")]
         [CustomTimeRange("09:00", "16:00", ErrorMessage = "La actividad debe iniciar entre las 9:00 a.m. y las 4:00 p.m.")]
         public DateTime InitialDate { get; set; }
 
         [Required]
         [Display(Name = "Fecha de termino de la actividad")]
-        [DataType(DataType.DateTime, ErrorMessage = "Fecha Inválida")]
+        [DataType(DataType.DateTime, ErrorMessage = "Formato de fecha Inválida")]
         [CustomTimeRange("10:00", "17:00", ErrorMessage = "La actividad debe terminar entre las 10:00 a.m. y 05:00 p.m.")]
         public DateTime FinalDate { get; set; }
 

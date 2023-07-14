@@ -27,7 +27,7 @@ namespace BillingPeriod.Controllers
 
         // GET: Activity/List
         [HttpGet]
-        public async Task<IActionResult> List(DateTime? fecha)
+        public IActionResult List(DateTime? fecha)
         {
             List<Activity> activities;
 
@@ -65,7 +65,7 @@ namespace BillingPeriod.Controllers
                 }
                 else
                 {
-                    Message("Error de horas coincidentes", NotificationType.error);
+                    Message("Hay un registro que coincide en tiempo", NotificationType.error);
                     return View(request);
                 }
             }

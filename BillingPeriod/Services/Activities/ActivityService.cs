@@ -20,9 +20,15 @@ namespace BillingPeriod.Services.Activities
             {
                 return false; // Retorna false si hay conflicto de fechas
             }
-
-            _dbContext.Add(activity);
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                _dbContext.Add(activity);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Database Error: " + ex);
+            }
 
             return true; // Retorna true si se agrega exitosamente
         }
