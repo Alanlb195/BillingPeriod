@@ -25,4 +25,8 @@
     <None Include="wwwroot\Images\50e81648-1da6-4424-bfc6-939c21cdac03.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\GuestBook\" />
+  </ItemGroup>
+
 </Project>

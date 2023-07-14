@@ -25,6 +25,7 @@ builder.Services.AddScoped<IActivityService, ActivityService>();
 builder.Services.AddScoped<ICookieService, CookieService>();
 // Presentation Card Services
 builder.Services.AddScoped<IPresentationCardService, PresentationCardService>();
+// Pascal Triangle Service
 
 //--------- Mapper configuration ------------------//
 var mapperConfiguration = new MapperConfiguration(m =>

@@ -1,0 +1,39 @@
+﻿@model List<List<int>>
+
+@{
+    ViewData["Title"] = "Pascal Triangle";
+}
+
+<h1 class="pt-4 pb-5 text-center">Pascal Triangle</h1>
+
+
+
+<h2>Generate Pascal Triangle</h2>
+
+<form asp-action="GeneratePascalTriangle" method="post">
+    <div class="form-group">
+        <label for="numRows">Number of Rows:</label>
+        <input type="number" class="form-control" id="numRows" name="numRows" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Generate</button>
+</form>
+
+
+@if (Model != null && Model.Count > 0)
+{
+    <div class="pascal-triangle">
+        @foreach (var row in Model)
+        {
+            <div class="pascal-row">
+                @foreach (var number in row)
+                {
+                    <span class="pascal-number">@number</span>
+                }
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No Pascal Triangle data available.</p>
+}
