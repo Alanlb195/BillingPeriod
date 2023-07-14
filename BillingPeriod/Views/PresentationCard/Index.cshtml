@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Index Presentation Card";
+}
+
+<h1 class="pt-4 pb-5 text-center">Index Presentation Card</h1>
+
+
+
+@if (!string.IsNullOrEmpty(ViewData["ImagePath"] as string))
+{
+    <img src="/images/@Url.Content(ViewData["ImagePath"] as string)" alt="Presentation Card" />
+}
+
+<a asp-controller="PresentationCard" asp-action="StorePresentationCard" class="btn btn-block btn-warning">Add a new Presentation Card</a>

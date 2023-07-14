@@ -2,23 +2,29 @@ using AutoMapper;
 using BillingPeriod.Models;
 using BillingPeriod.Services.Activities;
 using BillingPeriod.Services.Billing;
+using BillingPeriod.Services.Coockie;
 using BillingPeriod.Services.Helpers;
+using BillingPeriod.Services.PresentationCardService;
 using BillingPeriod.Tools;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddDbContext<DefaultDBContext>();
 
-
-
+// Billing Services
 builder.Services.AddScoped<IBillingService, BillingService>();
 builder.Services.AddSingleton<FinalDateCalculator>();
 builder.Services.AddSingleton<PrintDayCalculator>();
-
+// Activity Calendar Services
 builder.Services.AddScoped<IActivityService, ActivityService>();
-
+//Coockie Services
+builder.Services.AddScoped<ICookieService, CookieService>();
+// Presentation Card Services
+builder.Services.AddScoped<IPresentationCardService, PresentationCardService>();
 
 //--------- Mapper configuration ------------------//
 var mapperConfiguration = new MapperConfiguration(m =>
