@@ -1,5 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<BillingPeriod.Models.Guestbook>
+
 @{
+    ViewData["Title"] = "Default";
+}
+
+<a class="mt-4 mb-4" asp-action="Registro">Registrar comentario</a>
+
+@if (Model != null && Model.Count > 0)
+{
+
+    <table class="table table-striped">
+
+        <thead>
+
+            <tr>
+                <th>Name</th>
+                <th>País</th>
+                <th>Comentarios</th>
+                <th>Opciones</th>
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            @foreach (var guestbook in Model)
+            {
+                <tr>
+
+                    <td>@guestbook.Name</td>
+                    <td>@guestbook.Country</td>
+                    <td>@guestbook.Comment</td>
+
+                    <td>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-secondary dropdown-toggle"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                                Opciones
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a asp-action="Registro" asp-route-id="@guestbook.Id" class="dropdown-item">Editar</a>
+                                <a asp-action="Delete" asp-route-id="@guestbook.Id" class="dropdown-item"
+                                onclick="return confirm('¿Estás seguro de eliminar este registro?')">Eliminar</a>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+
+} else {
+    <h1 class="mt-5 mb-5">No hay registros disponibles</h1>
 }

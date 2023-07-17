@@ -3,6 +3,7 @@ using BillingPeriod.Models;
 using BillingPeriod.Services.Activities;
 using BillingPeriod.Services.Billing;
 using BillingPeriod.Services.Coockie;
+using BillingPeriod.Services.GuestBook;
 using BillingPeriod.Services.Helpers;
 using BillingPeriod.Services.PresentationCardService;
 using BillingPeriod.Tools;
@@ -25,7 +26,8 @@ builder.Services.AddScoped<IActivityService, ActivityService>();
 builder.Services.AddScoped<ICookieService, CookieService>();
 // Presentation Card Services
 builder.Services.AddScoped<IPresentationCardService, PresentationCardService>();
-// Pascal Triangle Service
+// Guestbook Service
+builder.Services.AddScoped<IGuestbookService, GuestbookService>();
 
 //--------- Mapper configuration ------------------//
 var mapperConfiguration = new MapperConfiguration(m =>

@@ -1,5 +1,36 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BillingPeriod.Models.Guestbook
+
 @{
+    ViewData["Title"] = "Registro";
 }
+
+<form asp-action="Registar" method="post">
+
+    <input type="hidden" class="form-control" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Country"></label>
+        <select asp-for="Country" class="form-control">
+            <option selected value="México">México</option>
+            <option value="Estados Unidos">Estados Unidos</option>
+            <option value="Francia">Francia</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Brasil">Brasil</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Comment"></label>
+        <textarea class="form-control" rows="3" asp-for="Comment"></textarea>
+    </div>
+
+    <button class="btn btn-success" type="submit">Confirmar</button>
+
+</form>
+
+
