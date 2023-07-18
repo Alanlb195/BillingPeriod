@@ -5,6 +5,7 @@ using BillingPeriod.Services.Billing;
 using BillingPeriod.Services.Coockie;
 using BillingPeriod.Services.GuestBook;
 using BillingPeriod.Services.Helpers;
+using BillingPeriod.Services.Login;
 using BillingPeriod.Services.PresentationCardService;
 using BillingPeriod.Tools;
 
@@ -15,6 +16,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddDbContext<DefaultDBContext>();
+builder.Services.AddSession();
 
 // Billing Services
 builder.Services.AddScoped<IBillingService, BillingService>();
@@ -28,6 +30,8 @@ builder.Services.AddScoped<ICookieService, CookieService>();
 builder.Services.AddScoped<IPresentationCardService, PresentationCardService>();
 // Guestbook Service
 builder.Services.AddScoped<IGuestbookService, GuestbookService>();
+// Login Services
+builder.Services.AddScoped<ILoginService, LoginService>();
 
 //--------- Mapper configuration ------------------//
 var mapperConfiguration = new MapperConfiguration(m =>
@@ -54,6 +58,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(

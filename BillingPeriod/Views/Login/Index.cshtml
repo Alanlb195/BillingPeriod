@@ -1,0 +1,32 @@
+﻿@model BillingPeriod.Models.UserData;
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1 class="pt-5 pb-4 text-center">Session por tiempo</h1>
+
+
+<form asp-action="Index" method="post">
+
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input class="form-control" asp-for="UserName" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input class="form-control" asp-for="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DurationTime"></label>
+        <input class="form-control" asp-for="DurationTime" />
+        <span asp-validation-for="DurationTime" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary btn-block" type="submit">Login</button>
+
+</form>

@@ -125,7 +125,7 @@ namespace BillingPeriod.Services.GuestBook
             }
         }
 
-        public async Task<bool> ExistsGuestbook(int id)
+        public async Task<bool> ExistsGuestbook(int? id)
         {
             try
             {
@@ -144,10 +144,8 @@ namespace BillingPeriod.Services.GuestBook
             }
             catch (Exception ex)
             {
-                // Manejo personalizado de la excepción o relanzamiento según tus necesidades.
-                // ...
-
                 return false;
+                new Exception("Problem with the comprobation " + ex);
             }
         }
 

@@ -9,6 +9,6 @@ namespace BillingPeriod.Services.GuestBook
         Task<bool> AddGuestbook(Guestbook guestbook);
         Task<bool> UpdateGuestbook(Guestbook guestbook);
         Task<bool> Delete(int Id);
-        Task<bool> ExistsGuestbook(int id);
+        Task<bool> ExistsGuestbook(int? id);
     }
 }
