@@ -27,6 +27,48 @@
         <span asp-validation-for="DurationTime" class="text-danger"></span>
     </div>
 
+    <div class="form-group mt-2">
+        <label asp-for="UseLettersInCaptcha">Seleccione el tipo de CAPTCHA:</label>
+        <select class="form-control" asp-for="UseLettersInCaptcha" id="captchaTypeSelect">
+            <option value="false">Solo números</option>
+            <option value="true">Solo letras</option>
+        </select>
+    </div>
+
+
+    <div class="form-group mt-2">
+        <label asp-for="Captcha"></label>
+        <img style="display: block" src="data:image/png;base64,@ViewBag.CaptchaImage" alt="Captcha Image" />
+        <input class="form-control mt-2" asp-for="Captcha" />
+        <span asp-validation-for="Captcha" class="text-danger"></span>
+    </div>
+
+
     <button class="btn btn-primary btn-block" type="submit">Login</button>
 
 </form>
+
+
+
+@section Scripts {
+    <script>
+        // Actualizar el CAPTCHA cuando el usuario cambie su preferencia
+        document.getElementById("captchaTypeSelect").addEventListener("change", function () {
+            var formData = new FormData();
+            formData.append("CaptchaType", this.value);
+
+            fetch("@Url.Action("Index")", {
+                method: "POST",
+                body: formData,
+            })
+                .then(response => response.text())
+                .then(html => {
+                    var tempElement = document.createElement("div");
+                    tempElement.innerHTML = html;
+
+                    var newCaptchaImage = tempElement.querySelector("img").src;
+                    document.querySelector("img").src = newCaptchaImage;
+                });
+        });
+    </script>
+}

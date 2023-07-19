@@ -1,6 +1,4 @@
-﻿@inject BillingPeriod.Services.Login.ILoginService _loginService;
-
-@{
+﻿@{
     ViewData["Title"] = "Welcome Page";
     var expirationTime = (DateTime)ViewBag.ExpirationTime;
     var countdownDate = expirationTime.ToString("MMM d, yyyy HH:mm:ss");

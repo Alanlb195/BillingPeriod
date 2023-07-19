@@ -23,7 +23,7 @@ namespace BillingPeriod.Services.Login
                 _contextAccessor.HttpContext.Session.SetString(UserDataKey, userDataJson);
 
                 // Calcular la fecha y hora de expiración de la sesión
-                DateTime sessionExpiration = DateTime.Now.AddMinutes(userData.DurationTime);
+                DateTime sessionExpiration = DateTime.Now.AddSeconds(userData.DurationTime);
 
                 _contextAccessor.HttpContext.Session.SetString(SessionExpirationKey, sessionExpiration.ToString());
             }

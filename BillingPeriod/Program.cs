@@ -2,6 +2,7 @@ using AutoMapper;
 using BillingPeriod.Models;
 using BillingPeriod.Services.Activities;
 using BillingPeriod.Services.Billing;
+using BillingPeriod.Services.Captcha;
 using BillingPeriod.Services.Coockie;
 using BillingPeriod.Services.GuestBook;
 using BillingPeriod.Services.Helpers;
@@ -32,6 +33,7 @@ builder.Services.AddScoped<IPresentationCardService, PresentationCardService>();
 builder.Services.AddScoped<IGuestbookService, GuestbookService>();
 // Login Services
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<ICaptchaService, CaptchaService>();
 
 //--------- Mapper configuration ------------------//
 var mapperConfiguration = new MapperConfiguration(m =>

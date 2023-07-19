@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BillingPeriod.Models.Validations;
+using System.ComponentModel.DataAnnotations;
 
 namespace BillingPeriod.Models
 {
@@ -16,7 +17,14 @@ namespace BillingPeriod.Models
         public string Password { get; set; }
 
         [Required]
-        [Display(Name ="Tiempo de la sesion en minutos")]
-        public int DurationTime { get; set; } // MINUTES
+        [MinSeconds(10)]
+        [Display(Name = "Tiempo de la sesión en segundos")]
+        public int DurationTime { get; set; }
+
+        [Required]
+        [Display(Name = "Escribe lo que dice la imágen del Captcha")]
+        public string Captcha { get; set; }
+
+        public bool UseLettersInCaptcha { get; set; } // Preferencia para el tipo de CAPTCHA
     }
 }
